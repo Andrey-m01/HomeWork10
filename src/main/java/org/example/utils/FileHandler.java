@@ -39,18 +39,17 @@ public class FileHandler {
         }
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        StringBuilder strToFile = new StringBuilder("[\n");
+        String strToFile = gson.toJson(userList);
+//        for (Object o : userList) {
+//            strToFile.append(gson.toJson(o))
+//                    .append(",\n");
+//        }
+//
+//        strToFile.delete(strToFile.length() - 2, strToFile.length());
+//        strToFile = new StringBuilder(strToFile.toString().replace("\n", "\n  "));
+//        strToFile.append("\n]");
 
-        for (Object o : userList) {
-            strToFile.append(gson.toJson(o))
-                    .append(",\n");
-        }
-
-        strToFile.delete(strToFile.length() - 2, strToFile.length());
-        strToFile = new StringBuilder(strToFile.toString().replace("\n", "\n  "));
-        strToFile.append("\n]");
-
-        writeToFile(fileToWrite, strToFile.toString());
+        writeToFile(fileToWrite, strToFile);
 
         System.out.println("Completed (see file)");
 
